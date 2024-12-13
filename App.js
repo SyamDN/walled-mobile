@@ -1,29 +1,38 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, TextInput, View, Button, Image } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  TouchableOpacity,
+  Image,
+} from 'react-native';
+
+import Button from './components/Button.jsx';
+import Input from './components/Input.jsx';
 
 export default function App() {
   return (
-    <View
-      style={[
-        styles.container,
-        {
-          // Try setting `flexDirection` to `"row"`.
-          flexDirection: 'column',
-        },
-      ]}
-    >
-      <Image source={require('./assets/Vector.png')} />
+    <View style={styles.container}>
+      <Image source={require('./assets/Vector.png')} style={styles.logo} />
+
       <TextInput
         style={styles.input}
         placeholder="Email"
-        keyboardType="email-address"
+        placeholderTextColor="#aaa"
       />
+
       <TextInput
         style={styles.input}
         placeholder="Password"
+        placeholderTextColor="#aaa"
         secureTextEntry={true}
       />
-      <Button title="Login" color="#19918F" />
+
+      <Button text="Login" bgColor="#19918F" />
+
+      <Input text="Notes" />
+
       <StatusBar style="auto" />
     </View>
   );
@@ -32,18 +41,30 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    padding: 20,
+  },
+  logo: {
+    // width: 100,
+    // height: 100,
+    marginBottom: 30,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 20,
   },
   input: {
-    height: 40,
     width: '100%',
-    margin: 12,
+    height: 50,
+    borderColor: '#ddd',
     borderWidth: 1,
-    padding: 10,
-    borderRadius: 5,
+    borderRadius: 15,
+    paddingHorizontal: 10,
+    marginBottom: 15,
+    backgroundColor: '#f9f9f9',
+    fontSize: 16,
   },
-  image: {},
 });
