@@ -78,13 +78,19 @@ import {
   TouchableOpacity,
   Image,
   Linking,
+  Modal,
+  Pressable,
 } from 'react-native';
 
 import Button from '../components/Button.jsx';
 import Input from '../components/Input.jsx';
 import { Link } from 'expo-router';
+import Checkbox from 'expo-checkbox';
+import React, { useEffect, useState } from 'react';
 
 export default function App() {
+  const [isChecked, setChecked] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
   return (
     <View style={styles.container}>
       <Image source={require('../assets/Vector.png')} style={styles.logo} />
@@ -112,6 +118,21 @@ export default function App() {
         placeholderTextColor="#aaa"
       />
       {/* <Link href="/home">Ke Home</Link> */}
+
+      <View style={styles.tnc}>
+        <Checkbox
+          style={styles.checkbox}
+          value={isChecked}
+          onValueChange={setChecked}
+          color={isChecked ? '#19918F' : undefined}
+        />
+        <Text style={styles.paragraph}>
+          I have read and agree to the{' '}
+          <Link href="/Tnc" style={styles.link}>
+            Terms and Conditions
+          </Link>
+        </Text>
+      </View>
 
       <Button text="Register" bgColor="#19918F" />
       <Text>
@@ -157,5 +178,23 @@ const styles = StyleSheet.create({
   },
   link: {
     color: '#19918F',
+  },
+  paragraph: {
+    fontSize: 15,
+  },
+  checkbox: {
+    margin: 8,
+  },
+  tnc: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  linkText: {
+    color: '#19918F',
+  },
+  modalView: {
+    backgroundColor: 'white',
+    padding: 20,
   },
 });

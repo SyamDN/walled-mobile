@@ -12,8 +12,16 @@ import {
 import Button from '../components/Button.jsx';
 import Input from '../components/Input.jsx';
 import { Link } from 'expo-router';
+import { z } from 'zod';
+import { useState } from 'react';
+
+const LoginScheme = z.object();
 
 export default function App() {
+  const [form, setForm] = useState({});
+  handleInputChange = (value) => {
+    console.log(value);
+  };
   return (
     <View style={styles.container}>
       <Image source={require('../assets/Vector.png')} style={styles.logo} />
@@ -28,6 +36,7 @@ export default function App() {
         placeholder="Password"
         placeholderTextColor="#aaa"
         secureTextEntry={true}
+        onChangeText={(text) => handleInputChange(e.target.value)}
       />
       <Link href="/home">
         <Button text="Login" bgColor="#19918F" />

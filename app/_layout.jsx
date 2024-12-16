@@ -18,6 +18,13 @@ export default function Layout() {
       <Stack.Screen name="home" options={{}} />
       <Stack.Screen name="index" options={{ headerShown: false }} />
       <Stack.Screen name="register" options={{}} />
+      <Stack.Screen
+        name="tnc"
+        options={{
+          presentation: 'Terms and Conditions',
+          title: 'Terms and Conditions',
+        }}
+      />
     </Stack>
   );
 }
